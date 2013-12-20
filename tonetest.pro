@@ -18,7 +18,5 @@ OTHER_FILES += qml/tonetest.qml \
     rpm/tonetest.spec \
     rpm/tonetest.yaml \
     tonetest.desktop \
-    qml/sure.wav \
-    qml/makemyday.wav \
-    qml/tastyburger.wav
+    qml/sure.wav
 

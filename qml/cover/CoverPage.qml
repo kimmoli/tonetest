@@ -39,15 +39,6 @@ CoverBackground {
         text: "Tonetest"
     }
 
-    CoverActionList {
-        id: coverAction
-
-        CoverAction
-        {
-            iconSource: "image://theme/icon-cover-play"
-        }
-
-    }
 }
 
 

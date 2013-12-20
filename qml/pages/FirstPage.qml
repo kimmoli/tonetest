@@ -35,37 +35,28 @@ import QtMultimedia 5.0 as Media
 
 Page {
     id: page
-    property bool i: false
-
-    property alias playAudio: playAudio
 
     Media.Audio
     {
         id: playAudio
-        source: "../" + toneAudio.value + ".wav"
-        volume: barAudio
-        onStatusChanged:
-        {
-            if (playRepeat.checked && (status === Media.Audio.EndOfMedia))
-                play()
-        }
+        source: "../sure.wav"
     }
 
     Media.SoundEffect
     {
         id: playSoundEffect
-        source: "../" + toneSoundEffect.value + ".wav"
-        volume: barSoundEffect.value
-        loops: playRepeat.checked ? Media.SoundEffect.Infinite : 0
+        source: "../sure.wav"
     }
 
 
-    SilicaFlickable {
+    SilicaFlickable
+    {
         anchors.fill: parent
 
         contentHeight: column.height
 
-        Column {
+        Column
+        {
             id: column
 
             width: page.width
@@ -74,105 +65,22 @@ Page {
             {
                 title: "Tonetest"
             }
-            Row
+
+            Button
             {
                 x: Theme.paddingSmall
-                width: column.width
-
-                ComboBox
-                {
-                    id: toneSoundEffect
-                    width: column.width/2
-                    x: Theme.paddingSmall
-
-                    label: "SoundEffect "
-                    menu: ContextMenu
-                    {
-                        MenuItem { text: "sure" }
-                        MenuItem { text: "makemyday" }
-                        MenuItem { text: "tastyburger" }
-                    }
-
-                }
-                IconButton
-                {
-                   anchors.top: parent.top
-                   anchors.topMargin: 25
-                   icon.source: playSoundEffect.playing ? 'image://theme/icon-m-pause' : 'image://theme/icon-m-play'
-                   onClicked:
-                   {
-                       if (playSoundEffect.playing)
-                           playSoundEffect.stop()
-                       else
-                           playSoundEffect.play()
-                   }
-                }
-
-            }
-            Slider
-            {
-                x: Theme.paddingSmall
-                id: barSoundEffect
                 anchors.horizontalCenter: parent.horizontalCenter
-                width: parent.width
-                minimumValue: 0.0
-                maximumValue: 1.0
-                value: 1.0
-                valueText: value.toFixed(2)
-            }
-            Row
-            {
-                x: Theme.paddingSmall
-                width: column.width
-
-                ComboBox
-                {
-                    id: toneAudio
-                    width: column.width/2
-                    x: Theme.paddingSmall
-
-                    label: "Audio                 "
-                    menu: ContextMenu
-                    {
-                        MenuItem { text: "sure" }
-                        MenuItem { text: "makemyday" }
-                        MenuItem { text: "tastyburger" }
-                    }
-                }
-
-                IconButton
-                {
-                   anchors.top: parent.top
-                   anchors.topMargin: 25
-                   icon.source: playAudio.playbackState  === Media.Audio.StoppedState ? 'image://theme/icon-m-play' : 'image://theme/icon-m-pause'
-                   onClicked:
-                   {
-                       if (playAudio.playbackState  === Media.Audio.StoppedState)
-                           playAudio.play()
-                       else
-                           playAudio.stop()
-                   }
-                }
+                text: "play with SoundEffect"
+                onClicked: playSoundEffect.play()
 
             }
-
-            Slider
+            Button
             {
                 x: Theme.paddingSmall
-                id: barAudio
                 anchors.horizontalCenter: parent.horizontalCenter
-                width: parent.width
-                minimumValue: 0.0
-                maximumValue: 1.0
-                value: 1.0
-                valueText: value.toFixed(2)
-            }
+                text: "play with Audio"
+                onClicked: playAudio.play()
 
-
-            TextSwitch
-            {
-                id: playRepeat
-                text: "Repeat"
             }
 
 
@@ -183,7 +91,8 @@ Page {
                 x: Theme.paddingSmall
                 anchors.horizontalCenter: parent.horizontalCenter
                 smooth: true
-                NumberAnimation on rotation {
+                NumberAnimation on rotation
+                {
                   from: 0
                   to: 360
                   loops: Animation.Infinite
