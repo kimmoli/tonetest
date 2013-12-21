@@ -30,14 +30,34 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../pages"
 
-CoverBackground {
-    Label {
+CoverBackground
+{
+
+    signal playSoundeffect();
+    signal playAudio();
+
+    Label
+    {
         id: label
         anchors.centerIn: parent
         text: "Tonetest"
     }
+    CoverActionList {
+        id: coverAction
+
+        CoverAction {
+            iconSource: "image://theme/icon-cover-play"
+            onTriggered: playSoundEffect()
+        }
+
+        CoverAction {
+            iconSource: "image://theme/icon-cover-play"
+            onTriggered: playAudio()
+        }
+    }
+
+
 
 }
 

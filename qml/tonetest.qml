@@ -31,11 +31,28 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "pages"
+import "cover"
 
 ApplicationWindow
 {
-    initialPage: Component { FirstPage { } }
-    cover: Qt.resolvedUrl("cover/CoverPage.qml")
+    id: app
+    initialPage: FirstPage
+    {
+        id: testpage
+    }
+
+    cover: CoverPage
+    {
+        id: coverpage
+    }
+
+    Connections
+    {
+        target: coverpage;
+        onPlayAudio: FirstPage.play_audio();
+        onPlaySoundEffect: FirstPage.play_soundeffect();
+    }
+
 }
 
 

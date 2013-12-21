@@ -34,17 +34,26 @@ import QtMultimedia 5.0 as Media
 
 
 Page {
-    id: page
+    id: firstPage
+
+    function playAudio()
+    {
+        playerAudio.play()
+    }
+    function playSoundEffect()
+    {
+        playerAudio.play()
+    }
 
     Media.Audio
     {
-        id: playAudio
+        id: playerAudio
         source: "../sure.wav"
     }
 
     Media.SoundEffect
     {
-        id: playSoundEffect
+        id: playerSoundEffect
         source: "../sure.wav"
     }
 
@@ -71,7 +80,7 @@ Page {
                 x: Theme.paddingSmall
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "play with SoundEffect"
-                onClicked: playSoundEffect.play()
+                onClicked: playSoundEffect()
 
             }
             Button
@@ -79,7 +88,7 @@ Page {
                 x: Theme.paddingSmall
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "play with Audio"
-                onClicked: playAudio.play()
+                onClicked: playAudio()
 
             }
 
@@ -97,6 +106,7 @@ Page {
                   to: 360
                   loops: Animation.Infinite
                   duration: 2000
+                  running: applicationActive
                 }
             }
 
