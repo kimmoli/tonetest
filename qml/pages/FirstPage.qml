@@ -36,14 +36,6 @@ import QtMultimedia 5.0 as Media
 Page {
     id: firstPage
 
-    function playAudio()
-    {
-        playerAudio.play()
-    }
-    function playSoundEffect()
-    {
-        playerAudio.play()
-    }
 
     Media.Audio
     {
@@ -68,7 +60,7 @@ Page {
         {
             id: column
 
-            width: page.width
+            width: firstPage.width
             spacing: Theme.paddingSmall
             PageHeader
             {
@@ -113,6 +105,17 @@ Page {
 
         }
     }
+
+    function playAudio()
+    {
+        playerAudio.play()
+    }
+
+    function playSoundEffect()
+    {
+        playerSoundEffect.play()
+    }
+
 }
 
 

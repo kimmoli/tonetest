@@ -38,7 +38,7 @@ ApplicationWindow
     id: app
     initialPage: FirstPage
     {
-        id: testpage
+        id: firstPage
     }
 
     cover: CoverPage
@@ -48,9 +48,9 @@ ApplicationWindow
 
     Connections
     {
-        target: coverpage;
-        onPlayAudio: FirstPage.play_audio();
-        onPlaySoundEffect: FirstPage.play_soundeffect();
+        target: coverpage
+        onPlayAudio: firstPage.playAudio()
+        onPlaySoundEffect: firstPage.playSoundEffect()
     }
 
 }

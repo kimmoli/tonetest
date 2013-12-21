@@ -34,24 +34,38 @@ import Sailfish.Silica 1.0
 CoverBackground
 {
 
-    signal playSoundeffect();
+    signal playSoundEffect();
     signal playAudio();
 
-    Label
+    Image
     {
-        id: label
+        id: logo
+        source: "../tonetest.png"
+        x: Theme.paddingSmall
         anchors.centerIn: parent
-        text: "Tonetest"
+        smooth: true
+        NumberAnimation on rotation
+        {
+          from: 0
+          to: 360
+          loops: Animation.Infinite
+          duration: 2000
+          running: !applicationActive
+        }
     }
-    CoverActionList {
+
+    CoverActionList
+    {
         id: coverAction
 
-        CoverAction {
-            iconSource: "image://theme/icon-cover-play"
+        CoverAction
+        {
+            iconSource: "image://theme/icon-cover-next-song"
             onTriggered: playSoundEffect()
         }
 
-        CoverAction {
+        CoverAction
+        {
             iconSource: "image://theme/icon-cover-play"
             onTriggered: playAudio()
         }
