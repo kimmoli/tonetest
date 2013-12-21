@@ -10,7 +10,8 @@ TARGET = tonetest
 
 CONFIG += sailfishapp
 
-SOURCES += src/tonetest.cpp
+SOURCES += src/tonetest.cpp \
+    src/testi.cpp
 
 OTHER_FILES += qml/tonetest.qml \
     qml/cover/CoverPage.qml \
@@ -19,4 +20,7 @@ OTHER_FILES += qml/tonetest.qml \
     rpm/tonetest.yaml \
     tonetest.desktop \
     qml/sure.wav
+
+HEADERS += \
+    src/testi.h
 

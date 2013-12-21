@@ -31,10 +31,12 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtMultimedia 5.0 as Media
+import tonetest.Test 1.0
 
 
 Page {
     id: page
+    property int i: 0
 
     Media.Audio
     {
@@ -72,17 +74,15 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "play with SoundEffect"
                 onClicked: playSoundEffect.play()
-
             }
+
             Button
             {
                 x: Theme.paddingSmall
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "play with Audio"
                 onClicked: playAudio.play()
-
             }
-
 
             Image
             {
@@ -100,9 +100,54 @@ Page {
                 }
             }
 
+            Label
+            {
+                id: asetin
+                x: Theme.paddingSmall
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "asetin"
+            }
+
+            Label
+            {
+                x: Theme.paddingSmall
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "sain " + test.kukkuu
+            }
+
+            Button
+            {
+                x: Theme.paddingSmall
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "tyhjää"
+                onClicked: test.komento()
+            }
+
+
 
         }
     }
+
+    Timer
+    {
+        interval: 1000
+        running: true
+        repeat: true
+        onTriggered:
+        {
+            asetin.text = "kissa " + i
+            test.kukkuu = "kissa " + i
+            i++
+        }
+
+    }
+
+    Test
+    {
+        id: test
+    }
+
+
 }
 
 
